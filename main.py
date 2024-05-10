@@ -1,8 +1,8 @@
-import art
 from colorama import init, Fore
 from colorama import Back
 from colorama import Style
 import time
+from modules.print_art import artText
 
 # ToDo list:
 # 1. Если потребуется, распредилить функции по модулям
@@ -32,10 +32,11 @@ print('''
 
 selectLanuage = input("Select language (ru/en): ")
 
-def questionsArtText():
-    if (selectLanuage == "ru"):
 
-        # Question: why text output?
+def questionsArtText():
+    if (selectLanuage == "ru"): # Если пользыватель выбрал русский
+
+        # Question: какой текст вывести
         printText = input("Введите текст который хотите отобразить символами (только латиские символы): ")
         print()
 
@@ -44,13 +45,16 @@ def questionsArtText():
         print()
 
         # Questiom: 
-        printTextFont = input("Введите желаймый шрифт (block, small, white_bubble (не поддерживает ASCII), fancy5):")
+        printTextFont = input("Введите желаймый шрифт (1, 2, 3, 4, 5): ")
+        print()
 
-        artText(printText, printTextSpace)
-    elif (selectLanuage == "en"):
+        artText(printText, printTextSpace, printTextFont)
+
+    elif (selectLanuage == "en"): # Если пользыватель выбрал английский язык
         printText = input("Enter the text you want to display in symbols (Latin characters only): ")
         artText(printText, printTextSpace)
-    else:
+
+    else: # Ошибка о не коректом языке
         print()
         print(Fore.RED + "Вы ввели не коректный язык, введите \"ru\", если хотите программу на русском или \"en\", если на английском." + Style.RESET_ALL)
         return
